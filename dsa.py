@@ -6,7 +6,6 @@ from sympy import isprime
 # dependencies: sympy (pip install sympy) - for prime number checking
 
 # Program for digitally signing using the Digital Signature Algorithm (DSA)
-# Part of CPSC 3730 Project
 
 # place program under function runDSA so it can be called by GUI 
 def runDSA():
