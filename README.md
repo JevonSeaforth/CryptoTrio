@@ -28,12 +28,17 @@ Diffie-Hellman relies on the Discrete Logarithm Problem, which makes it computat
 ## **Future Improvements**
 Some of the improvements I intend to focus on include:
 
-### **Optimizing Code Efficiency**: Streamlining the implementation for better performance.
+### **Optimizing Code Efficiency**: 
+Streamlining the implementation for better performance.
 
-### **Adding more encryption algorithms**: Expanding the project to include other well-known encryption algorithms, such as AES (Advanced Encryption Standard), DES (Data Encryption Standard), and ECC (Elliptic Curve Cryptography). This will allow for a broader comparison of different cryptographic techniques and their trade-offs in terms of security, efficiency, and use cases.
+### **Adding more encryption algorithms**: 
+Expanding the project to include other well-known encryption algorithms, such as AES (Advanced Encryption Standard), DES (Data Encryption Standard), and ECC (Elliptic Curve Cryptography). This will allow for a broader comparison of different cryptographic techniques and their trade-offs in terms of security, efficiency, and use cases.
 
-### **Enhancing Documentation**: Providing more detailed and clear explanations to make the code more understandable.
+### **Enhancing Documentation**: 
+Providing more detailed and clear explanations to make the code more understandable.
 
-### **Upgrading the GUI**: Improving the user interface for a more visually pleasing and engaging experience.
+### **Upgrading the GUI**: 
+Improving the user interface for a more visually pleasing and engaging experience.
 
-### **Adding Interactive Features**: Allow users to add their own messages to encrypt. 
+### **Adding Interactive Features**: 
+Allow users to add their own messages to encrypt. 
