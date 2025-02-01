@@ -89,20 +89,19 @@ def runDH():
         print("Secret_Key = ", pub_jevon, "^", Alex, " mod ", P)
         print("Secret_Key = ", pub_alex, "^", Jevon, " mod ", P, '\n')
         # Swapping the Public Keys to generate the Secret Key
+        print("Printing value of P withing compute_secret", P)
         secret_alex = pow(pub_jevon, Alex) % P
         secret_jevon = pow(pub_alex, Jevon) % P
 
         if (secret_jevon == secret_alex):
-            print("Shared Secret Key: ", secret_alex)
             return secret_alex
         else:
             return -1
-
-
-
+        
     assign_private_key()
     gen_prime(lower, upper)
     public_alex, public_jevon = gen_public()
     secret = compute_secret(public_alex, public_jevon)
-
+    print("Shared Secret Key: ", secret)
+    
 runDH()
