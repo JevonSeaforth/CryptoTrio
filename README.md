@@ -11,7 +11,11 @@ This project was originally developed in 2023 in collaboration with Alex Stephen
 Some of the improvements I intend to focus on include:
 
 **Optimizing Code Efficiency**: Streamlining the implementation for better performance.
+
 **Adding more encryption algorithms**: Expanding the project to include other well-known encryption algorithms, such as AES (Advanced Encryption Standard), DES (Data Encryption Standard), and ECC (Elliptic Curve Cryptography). This will allow for a broader comparison of different cryptographic techniques and their trade-offs in terms of security, efficiency, and use cases.
+
 **Enhancing Documentation**: Providing more detailed and clear explanations to make the code more understandable.
+
 **Upgrading the GUI**: Improving the user interface for a more visually pleasing and engaging experience.
+
 **Adding Interactive Features**: Allow users to add their own messages to encrypt. 
