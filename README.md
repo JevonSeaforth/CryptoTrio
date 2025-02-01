@@ -4,8 +4,6 @@ This project demonstrates the implementation of three fundamental cryptographic 
 **RSA** 
 RSA is a widely used asymmetric encryption algorithm that utilizes a public key for encryption and a private key for decryption. RSA is based on the prime factorization problem - the difficulty in factoring a large composite number into its prime factors. While multiplying two primes is easy and efficient, factorizing a large composite number is significantly more computationally challenging. This computational challenge underpins the security of RSA. 
 
-This was originally written in 2023 in collaboration with Alex Stephen as a project for a Cryptography course at the University of Lethbridge. I will be making incremental improvements to the code 
-
 This project was originally developed in 2023 in collaboration with Alex Stephen as part of a Cryptography course at the University of Lethbridge. Moving forward, I plan to make incremental improvements to the code to enhance my understanding of cryptography and improve the utility of the project as a tool for visualizing and learning the fundamental concepts of encryption and cryptography.
 
 Some of the improvements I intend to focus on include:
