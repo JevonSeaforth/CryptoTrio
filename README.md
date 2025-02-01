@@ -16,8 +16,8 @@ RSA is a widely used asymmetric encryption algorithm that utilizes a public key 
 
 DSA is primarily used for digital signatures, allowing a sender to sign a message, or document and prove that it is authentic. The recipient of the message can verify the signature using the sender's pubic key, which ensure that an attacker has not intercepted and modified the contents of the message. 
 
-DSA's security is based on the Discrete Logarithm Problem, which involves the chalenge of finding x knowing y, g, and p where y 
-= g^x (mod p). Essentially, we are trying to reverse the exponentiation to recover x, but doing so is computationally difficult. As such, this inherent difficulty fdorms the foundation of DSA's strong security. 
+DSA's security is based on the Discrete Logarithm Problem, which involves the challenge of finding x knowing y, g, and p where y 
+= g^x (mod p). Essentially, we are trying to reverse the exponentiation to recover x, but doing so is computationally difficult. As such, this inherent difficulty forms the foundation of DSA's strong security. 
 
 ### **DH (Diffie-Hellman)**
 
