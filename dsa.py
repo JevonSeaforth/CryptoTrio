@@ -200,12 +200,9 @@ def runDSA():
             s = (kInverted * (M + (x * r))) % q
 
             print("\n\tOutput of Signing function: ")
-            print("\t\tr value of signature: ", end="")
-            print(r)
-            print("\t\ts value of signature: ", end="")
-            print(s)
-            print()
-
+            print(f"\t\tr value of signature: {r}\n", end="")
+            print(f"\t\ts value of signature: {s}\n\n", end="")
+          
             return r, s
 
     # Definition: Verifies the digital signature
