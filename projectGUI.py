@@ -47,14 +47,20 @@ def clearTextArea():
 # Application window 
 root = tk.Tk()
 root.state('zoomed')
-root.title("Alex and Jevon's project")
+root.title("CryptoTrio project")
 
-frameA = tk.Frame(background="#c8c8c8")
+root.configure(bg="#2E2E2E")
+
+# Create the frame that holds the buttons and set it up correctly
+frameA = tk.Frame(root, background="#333333")
 frameA.pack(side='bottom', fill=None)
 
 # Create widget to display terminal outputs,
-textArea = tk.Text(root, font=("Arial", 20))
-textArea.pack(expand=True, fill=tk.BOTH) # parameters fill container's space
+textArea = tk.Text(root, font=("Arial", 20), bg="#1E1E1E", fg="white", insertbackground='white', borderwidth=2, relief='flat')
+textArea.pack(expand=True, fill=tk.BOTH)  # parameters fill container's space
+
+# Add a title or header to the Text widget
+textArea.insert(tk.END, "Welcome to the CryptoTrio project - Please select an algorithm to run.\n\n") 
 
 # Class responsible for writing to text area widget 
 class writeToTextArea:
@@ -71,17 +77,32 @@ sys.stdout = writeToTextArea(textArea)
 # capture error stream and display in text area 
 sys.stderr = writeToTextArea(textArea)
 
+# Dark mode button style
+button_style = {
+    'bg': '#555555',  # Dark button background
+    'fg': 'white',    # Light text color
+    'activebackground': '#555555',  # Button pressed color
+    'activeforeground': 'white',    # Text color when pressed
+    'relief': 'flat',  # Flat button for a more modern look
+    'font': ('Arial', 14),
+    'borderwidth': 1, 
+}
+
+# Frame for buttons to arrange them horizontally
+buttonFrame = tk.Frame(root, background="#333333")
+buttonFrame.pack(pady=20)
+
 # button that runs dsa program
-dsaButton= tk.Button(frameA, text="Run DSA", command=executeDSA)
-dsaButton.pack(pady=10)
+dsaButton = tk.Button(buttonFrame, text="Run DSA", command=executeDSA, **button_style)
+dsaButton.pack(side='left', padx=10)
 
-# button that runs rsa program (todo: insert rsa program in command=)
-rsaButton = tk.Button(frameA, text="Run RSA", command=executeRSA)
-rsaButton.pack(pady=10)
+# button that runs rsa program
+rsaButton = tk.Button(buttonFrame, text="Run RSA", command=executeRSA, **button_style)
+rsaButton.pack(side='left', padx=10)
 
-# button that runs key exchange program (todo: insert keyexchange program in command=)
-keyExchangeButton = tk.Button(frameA, text="Run Key Exchange", command=executeDH)
-keyExchangeButton.pack(pady=10)
+# button that runs key exchange program
+keyExchangeButton = tk.Button(buttonFrame, text="Run Key Exchange", command=executeDH, **button_style)
+keyExchangeButton.pack(side='left', padx=10)
 
 # event loop
 root.mainloop()

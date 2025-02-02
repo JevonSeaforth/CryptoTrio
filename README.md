@@ -6,6 +6,9 @@ This project demonstrates the implementation of three fundamental cryptographic 
 
 This project was originally developed in 2023 in collaboration with Alex Stephen as part of a Cryptography course at the University of Lethbridge. Moving forward, I plan to make incremental improvements to the code to enhance my understanding of cryptography and improve the utility of the project as a tool for visualizing and learning the fundamental concepts of encryption and cryptography.
 
+### Dependencies: 
+sympy (pip install sympy) - for checking if a number is prime
+
 ## Algorithms implemented: 
 
 ### **RSA (Rivest-Shamir-Adleman)** 

@@ -5,7 +5,26 @@ from sympy import isprime
 
 # dependencies: sympy (pip install sympy) - for prime number checking
 
-# Program for digitally signing using the Digital Signature Algorithm (DSA)
+'''
+The following program signs on a plaintext message, and then verifies it using DSA.
+We simulate the signing, verification, and transmission of the message through print statements. 
+This program was developed to comply with the Digital Signature Standard developed by NIST, available here: https://nvlpubs.nist.gov/nistpubs/fips/nist.fips.186-4.pdf
+
+The DSA works by generating a pair of keys: a private key for signing and a public key for verification. The signing and verification process involves the following steps:
+
+Key Generation: Private Key (k): Used by sender for signing the message and public key (y) used by the receiver to verify the signature. 
+  
+Signing the Message:
+    First, the message is hashed using a cryptographic hash function (SHA-1 in this program).
+    The private key is then used to generate a digital signature, which consists of two components: r and s.
+        r: Derived from the modular arithmetic of the private key and a random integer k.
+        s: The second part of the signature, which also involves k and the message hash.
+
+Verification of the Signature:
+    The public key, the message, and the signature (r, s) are used to verify that the signature was generated with the correct private key and that the message has not been altered.
+    The verification process uses the modular exponentiation and discrete logarithm problem to verify the signature.
+    If the verification process passes, the signature is valid, and we can confirm the integrity of the message. 
+'''
 
 # place program under function runDSA so it can be called by GUI 
 def runDSA():
@@ -158,12 +177,12 @@ def runDSA():
         print("Message M to digitally sign: ", end="")
         print(M.decode())
 
-        print(f"\n   User's private key is: {x}")
+        print(f"\n\tUser's private key is: {x}")
 
         while True: 
             k = random.randint(1, q - 1) # generate a random integer such that 0 < k < q
             r0 = pow(g, k, p) # calculate r as (g^k mod p) mod q
-            r = r0 % q
+            r = r0 % q # ensure size of r is within bounds of q
             M = int(sha1(M).hexdigest(), 16) # calculate the hash of M using SHA-1
         
             # ensure k isn't 0
@@ -180,10 +199,10 @@ def runDSA():
             # calculate s parameter
             s = (kInverted * (M + (x * r))) % q
 
-            print("   \n   Output of Signing function: ")
-            print("   r value of signature: ", end="")
+            print("\n\tOutput of Signing function: ")
+            print("\t\tr value of signature: ", end="")
             print(r)
-            print("   s value of signature: ", end="")
+            print("\t\ts value of signature: ", end="")
             print(s)
             print()
 
@@ -191,7 +210,7 @@ def runDSA():
 
     # Definition: Verifies the digital signature
     # Parameters: takes p, q, g, the received message (M), user's public key (y), and signing parameters (r and s)
-    # Returns: True or False
+    # Returns: no return, prints the value of the verification
     def verifying(p, q, g, M, y, r, s):
         assert isprime(p), "p parameter is not prime"
         assert isprime(q), "q parameter is not prime"
@@ -214,12 +233,17 @@ def runDSA():
         
         # if v is equal to r, digital signature is verified
         # otherwise, digital signature not verified
-        print(f"\n   The value of v is: {v}\n", end="")
-        print(f"   The value of r is: {r}\n\n", end="")
+        print(f"\n\t\tThe value of v is: {v}\n", end="")
+        print(f"\t\tThe value of r is: {r}\n\n", end="")
 
         test = (v == r)
-        print(f"   v == r: {test}")
-        return v == r
+        print(f"\tv == r: {test}")
+        
+        # based on value of the test, check if the signature is valid and print the results
+        if test == True:
+            print("\n\tDigital signature IS valid\n")
+        else:
+            print("\n\tDigital signature IS NOT valid\n")
 
     # Initialize values..
 
@@ -246,11 +270,8 @@ def runDSA():
     r, s = signing(p, q, g, x, M)
 
     # Print statements and call verifying to check if signature is valid
-    print(f"   Verify M's digital signature: ", end="")
-    if verifying(p, q, g, M, y, r, s):
-        print("   Digital signature IS valid\n")
-    else:
-        print("   Digital signature IS NOT valid\n")
+    print(f"\tVerify M's digital signature: ", end="")
+    verifying(p, q, g, M, y, r, s)
 
     # Try another messsage, encode message to be signed
     textInput2 = "Yes, I have received the package. -Alex"
@@ -266,31 +287,25 @@ def runDSA():
     r2, s2 = signing(p, q, g, x2, M2)
 
     # Print statements and call verifying to check if signature is valid
-    print("   Verify M2's digital signature: ", end="")
-    if verifying(p, q, g, M2, y2, r2, s2):
-        print("   Digital signature IS valid\n")
-    else:
-        print("   Digital signature IS NOT valid\n")
+    print("\tVerify M2's digital signature: ", end="")
+    verifying(p, q, g, M2, y2, r2, s2)
 
     # Print statements to illustrate example of a possible attacker 
-    print("SCENARIO:\n\n   An attacker successfully executes a replay attack and gets both the message and the signature data. ")
-    print("   They now send an altered message to the receiver, does DSA verify the signature?\n")
+    print("ATTACK SCENARIO:\n\n\tAn attacker successfully exploits a replay attack and gets both the message and the signature data.")
+    print("\tThey now send an altered message to the receiver, does DSA verify the signature?\n")
    
     # attacker encodes a different message
     textInput3 = "Send bitcoin to this address or face consequences 1A1zP1eP5QGefi2DMPTfT"
     M3 = str.encode(textInput3, 'ascii')
 
-    print(f"   Original message: {M2.decode()}")
-    print(f"   Captured parameter r is: {r2}")
-    print(f"   Captured parameter s is: {s2}")
-    print(f"   Attacker's new message: {M3.decode()}\n")
-    print("   Verify M3's digital signature: ", end="")
+    print(f"\tOriginal message: {M2.decode()}")
+    print(f"\tCaptured parameter r is: {r2}")
+    print(f"\tCaptured parameter s is: {s2}")
+    print(f"\tAttacker's new message: {M3.decode()}\n")
+    print("\tVerify M3's digital signature: ", end="")
 
     # attacker tries to pass different message using intercepted parameters, check if verifying validates signature
-    if verifying(p, q, g, M3, y2, r2, s2):
-        print("   Digital signature IS valid\n")
-    else:
-        print("   Digital signature IS NOT valid\n")
+    verifying(p, q, g, M3, y2, r2, s2)
 
 # For running entire program, entire program bundled under this function for GUI implementation
 runDSA()
