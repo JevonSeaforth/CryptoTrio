@@ -307,8 +307,5 @@ def runDSA():
     # attacker tries to pass different message using intercepted parameters, check if verifying validates signature
     verifying(p, q, g, M3, y2, r2, s2)
 
-# For running entire program, entire program bundled under this function for GUI implementation
+# For running entire program, sentire program bundled under this function for GUI implementation
 runDSA()
-
-
-

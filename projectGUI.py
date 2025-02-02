@@ -6,10 +6,6 @@ import dhkey
 import rsa
 
 # Run this program to use GUI
-# must import programs into this file, write a function similar to executeDSA() and call it from the buttons
-# replacing command= with command={*functioncall*}
-# I wrapped my entire program in runDSA() so everything can be executed from the one function call
-
 def executeDSA():
     try:
         # clear the text area 
@@ -50,6 +46,7 @@ root.state('zoomed')
 root.title("CryptoTrio project")
 
 root.configure(bg="#2E2E2E")
+
 
 # Create the frame that holds the buttons and set it up correctly
 frameA = tk.Frame(root, background="#333333")
