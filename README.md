@@ -4,7 +4,7 @@
 
 This project demonstrates the implementation of three fundamental cryptographic algorithms - RSA (Rivest-Shamir-Adleman), DSA (Digital Signature Algorithm), and DH (Diffie-Hellman) - from scratch. The goal was to explore the core principles of public-key cryptography and secure communication by creating these algorithms without relying on pre-built cryptographic libraries.
 
-This project was originally developed in collaboration with Alex Stephen as part of a Cryptography course at the University of Lethbridge. Moving forward, I plan to make incremental improvements to the code to enhance my understanding of cryptography and improve the utility of the project as a tool for visualizing and learning the fundamental concepts of encryption and cryptography.
+This project was originally developed in collaboration with Alex Stephen. Moving forward, I plan to make incremental improvements to the code to enhance my understanding of cryptography and improve the utility of the project as a tool for visualizing and learning the fundamental concepts of encryption and cryptography.
 
 ### Dependencies 
 sympy (pip install sympy) - for checking if a number is prime
